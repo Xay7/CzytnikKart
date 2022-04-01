@@ -1,3 +1,4 @@
+using Czytnik123.DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -9,7 +10,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WypozyczalniaFilmow.DAL;
 
 namespace Czytnik123
 {
@@ -18,6 +18,7 @@ namespace Czytnik123
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
         }
 
         public IConfiguration Configuration { get; }
@@ -27,11 +28,18 @@ namespace Czytnik123
         {
             services.AddControllersWithViews();
             services.AddDbContext<CardsContext>(options => options.UseSqlServer(Configuration.GetConnectionString("CardCS")));
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            Czytnik123.Mqtt.MqttProgram.StartServer();
+            Czytnik123.Mqtt.MqttProgram.StartClient();
+            Czytnik123.Mqtt.MqttProgram.SendMessage();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

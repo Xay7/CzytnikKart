@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 
-namespace WypozyczalniaFilmow.DAL
+namespace Czytnik123.DAL
 {
     public class CardsContext : DbContext
     {
@@ -20,11 +20,7 @@ namespace WypozyczalniaFilmow.DAL
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Card>().HasData(
-              new Card { Id = 1, CardSerialNumber = "13123" },
-              new Card { Id = 2, CardSerialNumber = "45745754" },
-              new Card { Id = 3, CardSerialNumber = "546" },
-              new Card { Id = 4, CardSerialNumber = "457547" },
-              new Card { Id = 5, CardSerialNumber = "547547" }
+              new Card { Id = 1, CardSerialNumber = "4b b9 ca 22 4b b9 ca 22 4b b9 ca 22 4b b9 ca 22 4b b9 ca 22 4b b9 ca 22 4b b9 ca 22 4b b9 ca 22 4b b9 ca 22 4b b9 ca 22 4b b9 ca 22 4b b9 ca 22 4b b9 ca 22 4b b9 ca 22" }
               );
 
 
@@ -43,11 +39,7 @@ namespace WypozyczalniaFilmow.DAL
             //list3.Add(room2);
 
             modelBuilder.Entity<Room>().HasData(
-              new Room { Id = 1, Name = "123" },
-              new Room { Id = 2, Name = "1233" },
-              new Room { Id = 3, Name = "1243" },
-              new Room { Id = 4, Name = "1253" },
-              new Room { Id = 5, Name = "1263" }
+              new Room { Id = 1, Name = "123", Card = 1 }
               );
 
 

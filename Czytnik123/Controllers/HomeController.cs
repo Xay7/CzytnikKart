@@ -1,4 +1,5 @@
-﻿using Czytnik123.Models;
+﻿using Czytnik123.DAL;
+using Czytnik123.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,7 +13,7 @@ namespace Czytnik123.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
+        CardsContext db; 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -20,6 +21,7 @@ namespace Czytnik123.Controllers
 
         public IActionResult Index()
         {
+
             return View();
         }
 
